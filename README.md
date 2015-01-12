@@ -22,6 +22,7 @@ js
         |-- bar-test.js
     |-- bar.js
 ```
+[see example for details](https://github.com/jhudson8/gulp-mocha-tdd/tree/master/example)
 
 To execute all tests
 ```
