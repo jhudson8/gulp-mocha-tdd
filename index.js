@@ -25,17 +25,15 @@ module.exports = function(gulp, options) {
   var testsInitFileName = options.testsInitFileName || '_init';
 
   gulp.task('test-js', function() {
-    if (argv.c) {
-      // clean the tests
-      deleteFolderRecursive(__dirname + '/.test');
-    }
-
     var mochaArgs = getMochaArgs();
-
+    var clean = mochaArgs.c || mochaArgs.clean;
+    mochaArgs.c = true;
     var watch = mochaArgs.w || mochaArgs.watch;
-    if (watch) {
-      mochaArgs.w = undefined;
-      mochaArgs.watch = undefined;
+    mochaArgs.w = mochaArgs.watch = undefined;
+
+    if (clean) {
+      // clean the tests
+      deleteFolderRecursive('.test');
     }
 
     var newCodeFilter = filter(function(file) {
@@ -124,22 +122,14 @@ module.exports = function(gulp, options) {
 
     function getMochaArgs() {
       var mochaArgs = {};
-      var sArgs = ['A', 'c', 'C', 'G', 'R', 'S', 'b', 'd', 'g', 'gc', 'i', 'r', 's', 't', 'u', 'w'];
-      var name, value, i;
-      for (i=0; i<sArgs.length; i++) {
-        name = sArgs[i];
+      var allowedArgs = ['A', 'c', 'C', 'G', 'R', 'S', 'b', 'd', 'g', 'i', 'r', 's', 't', 'u', 'w',
+          'asyncOnly', 'colors', 'noColors', 'growl', 'reporter', 'sort', 'bail', 'debug', 'grep',
+          'invert', 'require', 'slow', 'timeout', 'ui', 'watch', 'checkLeaks', 'compilers', 'debugBrk', 'globals',
+          'harmony', 'harmonyCollections', 'harmonyGenerators', 'harmonyProxies', 'inlineDiffs', 'interfaces',
+          'noDeprecation', 'noExit', 'noTimeouts', 'opts', 'prof', 'throwDeprecation', 'trace', 'traceDeprecation'];
+      for (i=0; i<allowedArgs.length; i++) {
+        name = allowedArgs[i];
         value = argv[name];
-        if (typeof value !== 'undefined') {
-          mochaArgs[name] = value;
-        }
-      }
-      var mArgs = ['asyncOnly', 'colors', 'noColors', 'growl', 'reporter', 'sort', 'bail', 'debug', 'grep',
-          'invert', 'require', 'slow', 'timeout', 'ui', 'watch', 'check-leaks', 'compilers', 'debug-brk', 'globals',
-          'harmony', 'harmony-collections', 'harmony-generators', 'harmony-proxies', 'inline-diffs', 'interfaces',
-          'no-deprecation', 'no-exit', 'no-timeouts', 'opts', 'prof', 'throw-deprecation', 'trace', 'trace-deprecation'];
-      for (i=0; i<mArgs.length; i++) {
-        name = yargs[i];
-        value = yargs[name];
         if (typeof value !== 'undefined') {
           mochaArgs[name] = value;
         }
@@ -157,9 +147,10 @@ module.exports = function(gulp, options) {
         }
         mochaArgs[key] = value;
       }
-      defaultValue('c', true, 'colors');
       defaultValue('R', 'spec', 'reporter');
-      defaultValue('debugBrk', argv.d);
+      defaultValue('debugBrk', argv.d || argv.debug);
+      argv.d = undefined;
+      argv.debug = undefined;
       mochaArgs.istanbul = options.istanbul;
       return mochaArgs;
     }
