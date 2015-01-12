@@ -48,6 +48,20 @@ js
     |-- _init.js
 ```
 
+Additional Transformations
+------------
+The ```pipe``` option (array of gulp stream handlers) can be used to perform additional transformations.  The
+following gulpfile can be used to support React JSX
+```
+var gulp = require('gulp');
+var react = require('gulp-react');
+var gulpMochaTDD = require('gulp-mocha-tdd');
+
+gulpMochaTDD(gulp, {
+  pipe: [react({ harmony: true })]
+});
+```
+
 
 Installation
 ------------
