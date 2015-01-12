@@ -100,6 +100,10 @@ module.exports = function(gulp, options) {
       parts.push(plumber());
     }
     parts.push(newCodeFilter);
+    if (options.pipe && options.pipe.length) {
+      Array.prototype.push.apply(parts, options.pipe);
+    }
+
     parts.push(gulp.dest('.test/js'));
 
     if (!watch) {
