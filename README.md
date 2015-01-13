@@ -90,7 +90,4 @@ var gulpMochaTDD = require('gulp-mocha-tdd');
 
 // make the "test-js" task available
 gulpMochaTDD(gulp);
-
-// make the "test" task available using "test-js" if desired
-gulp.task('test', ['test-js']);
 ```
