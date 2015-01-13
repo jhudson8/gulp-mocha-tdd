@@ -88,6 +88,5 @@ Inject the ```test-js``` task in ```gulpfile.js```
 var gulp = require('gulp');
 var gulpMochaTDD = require('gulp-mocha-tdd');
 
-// make the "test-js" task available
 gulpMochaTDD(gulp);
 ```
