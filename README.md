@@ -90,3 +90,5 @@ var gulpMochaTDD = require('gulp-mocha-tdd');
 
 gulpMochaTDD(gulp);
 ```
+
+Add ```.test``` to your ```.gitignore``` file
