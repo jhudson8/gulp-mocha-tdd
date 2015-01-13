@@ -11,35 +11,41 @@ easy test driven development with gulp and mocha
 
 By keeping unit tests in a subdirectory of the module javascript directory, the tests are more flexible when code is refactored and module references from the unit tests are more convienant.
 
+Usage
+-----------
+
+To execute all tests
+```
+> gulp test
+```
+And watch for module or unit test changes
+```
+> gulp test -w
+```
+Stop on any debugger statements
+```
+> gulp test -d
+> node-inspector  {in another window} (install globally if it does not exist)
+browse to http://127.0.0.1:8080/debug?port=5858
+```
+Any other mocha params can be used as well: see ```mocha -h```
+
+
 All modules must be with a root ```js``` directory and have a sibling "_tests" directory containing test modules with the ```-test``` suffix.  For example
 ```
 js
 |-- _tests
     |-- foo-test.js
+|
 |-- foo.js
+|
 |-- some-dir
     |-- _tests
         |-- bar-test.js
+    |
     |-- bar.js
 ```
 [see example for details](https://github.com/jhudson8/gulp-mocha-tdd/tree/master/example)
-
-To execute all tests
-```
-> gulp test-js
-```
-And watch for module or unit test changes
-```
-> gulp test-js -w
-```
-Stop on any debugger statements
-```
-                    > gulp test -d
-{in another window} > node-inspector
-{in browser}        > http://127.0.0.1:8080/debug?port=5858
-```
-Any other mocha params can be used as well: see ```mocha -h```
-
 
 Any files within the ```_tests``` directories prefixed with ```_``` will be ignored for testing allowing for utility modules.
 
@@ -60,8 +66,12 @@ gulpMochaTDD(gulp, {
 
 Options
 ------------
+* ***taskName***: the gulp task name ("test" if undefined)
 * ***pipe***: array of gulp stream handlers (See above for example)
 * ***init***: init function executed once before the tests
+* ***scriptsDir***: top level directory ("js" if undefined)
+* ***testFileSuffix***: unit test file name suffix ("-test" if undefined)
+* ***testsDirName***: name of directory which contains the unit test files ("_tests" if undefined)
 
 
 Installation
