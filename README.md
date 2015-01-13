@@ -31,7 +31,7 @@ browse to http://127.0.0.1:8080/debug?port=5858
 Any other mocha params can be used as well: see ```mocha -h```
 
 
-All modules must be with a root ```js``` directory and have a sibling "_tests" directory containing test modules with the ```-test``` suffix.  For example
+All modules must be with a root ```js``` directory and have a sibling ```_tests``` directory containing test modules with the ```-test``` suffix (all names are configurable - see "Options" section below).  For example
 ```
 js
 |-- _tests
@@ -83,7 +83,7 @@ npm install --save-dev gulp
 npm install --save-dev gulp-mocha-tdd
 ```
 
-Inject the ```test-js``` task in ```gulpfile.js```
+Inject the ```test``` task in ```gulpfile.js```
 ```
 var gulp = require('gulp');
 var gulpMochaTDD = require('gulp-mocha-tdd');
