@@ -86,7 +86,9 @@ npm install --save-dev gulp-mocha-tdd
 Inject the ```test``` task in ```gulpfile.js```
 ```
 var gulp = require('gulp');
-var gulpMochaTDD = require('gulp-mocha-tdd');
+var gulpMochaTDD = require('gulp-mocha-tdd', {
+  // add options here
+});
 
 gulpMochaTDD(gulp);
 ```
