@@ -8,9 +8,7 @@ var testBase = __dirname.replace(new RegExp('\/' + testsDirName + '$'), '');
 
 // allow for global initialization logic
 var initFilePath = './' + scriptPathPrefix + testsDirName + '/' + scriptInitFileName + '.js';
-if (fs.existsSync(initFilePath)) {
-  require(initFilePath);
-}
+{init}
 
 function evalFile(path) {
   var testFilePath = path.replace(new RegExp('\\/' + testsDirName + '\\/[^\\/]*'), function(fileName) {

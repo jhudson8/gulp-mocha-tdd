@@ -22,9 +22,10 @@ module.exports = function(gulp, options) {
   var scriptPathPrefix = (options.scriptsDir || 'js') + '/';
   var testFileSuffix = options.testFileSuffix || '-test';
   var testsDirName = options.testsDirName || '_tests';
-  var testsInitFileName = options.testsInitFileName || '_init';
 
-  gulp.task('test-js', function() {
+  var initFunction = options.init ? ('(' + options.init + ')();') : '';
+
+  gulp.task(options.taskName || 'test-js', function() {
     var mochaArgs = getMochaArgs();
     var clean = mochaArgs.c || mochaArgs.clean;
     mochaArgs.c = true;
@@ -47,10 +48,10 @@ module.exports = function(gulp, options) {
 
     function loadTemplate(fileName) {
       return fs.readFileSync(__dirname + '/' + fileName, {encoding: 'utf8'})
+        .replace('{init}', initFunction)
         .replace('{scriptPathPrefix}', scriptPathPrefix)
         .replace('{testFileSuffix}', testFileSuffix)
-        .replace('{testsDirName}', testsDirName)
-        .replace('{testsInitFileName}', testsInitFileName);
+        .replace('{testsDirName}', testsDirName);
     }
 
     // run mocha tests against all files

@@ -41,12 +41,8 @@ Stop on any debugger statements
 Any other mocha params can be used as well: see ```mocha -h```
 
 
-Any files within the ```_tests``` directories prefixed with ```_``` will be ignored for testing allowing for utility modules.  In addition, a special test module in the root ```_tests``` directory called ```_init.js``` can be created to include any pre-test initialization logic.
-```
-js
-|-- _tests
-    |-- _init.js
-```
+Any files within the ```_tests``` directories prefixed with ```_``` will be ignored for testing allowing for utility modules.
+
 
 Additional Transformations
 ------------
@@ -61,6 +57,11 @@ gulpMochaTDD(gulp, {
   pipe: [react({ harmony: true })]
 });
 ```
+
+Options
+------------
+* ***pipe***: array of gulp stream handlers (See above for example)
+* ***init***: init function executed once before the tests
 
 
 Installation
