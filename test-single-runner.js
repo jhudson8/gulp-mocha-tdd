@@ -24,8 +24,14 @@ function evalFile(path) {
     console.error('invalid test file (no source match) ' + testFilePath);
   }
 
-  describe(testFilePath.substring(testBase.length+1), function() {
-    require(path);
-  });
+  if (fs.existsSync(path)) {
+    describe(testFilePath.substring(testBase.length+1), function() {
+      if (fs.existsSync(path)) {
+        require(path);
+      }
+    });
+  } else {
+    console.error(path + ' could not be found');
+  }
 }
 evalFile('{filePath}');

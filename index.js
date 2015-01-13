@@ -25,7 +25,7 @@ module.exports = function(gulp, options) {
 
   var initFunction = options.init ? ('(' + options.init + ')();') : '';
 
-  gulp.task(options.taskName || 'test-js', function() {
+  gulp.task(options.taskName || 'test', function() {
     var mochaArgs = getMochaArgs();
     var clean = mochaArgs.c || mochaArgs.clean;
     mochaArgs.c = true;
