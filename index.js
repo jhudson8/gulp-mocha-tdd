@@ -38,6 +38,7 @@ module.exports = function(gulp, options) {
     }
 
     var newCodeFilter = filter(function(file) {
+      if (!file.stat) return false;
       if (file.stat.isDirectory()) {
         return true;
       }
