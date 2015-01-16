@@ -3,6 +3,7 @@ easy test driven development with gulp and mocha
 
 * it('should use mocha for unit tests')
 * it('should auto-generate the boilerplate module test describe statement')
+* it('should be able to work with your test naming conventions')
 * it('should make test driven development easy and convienant')
 * it('should support mocha options like breakpoints and grep')
 * it('should use conventions to associate modules with unit tests')
@@ -31,21 +32,27 @@ browse to http://127.0.0.1:8080/debug?port=5858
 Any other mocha params can be used as well: see ```mocha -h```
 
 
-All modules must be with a root ```js``` directory and have a sibling ```_tests``` directory containing test modules with the ```-test``` suffix (all names are configurable - see "Options" section below).  For example
+All modules must be within a root directory ("js" by default) and tests can either be in a separate root directory ("tests" by default) or tests can be in a directory relative ("_tests" by default) to the module.  Tests can use any naming pattern ("{module name}-test.js" by default).
+
+For example
 ```
 js
 |-- _tests
     |-- foo-test.js
-|
+|-- foo.js
+```
+or
+```
+js
 |-- foo.js
 |
-|-- some-dir
-    |-- _tests
-        |-- bar-test.js
-    |
-    |-- bar.js
+tests
+|-- foo-test.js
 ```
-[see example for details](https://github.com/jhudson8/gulp-mocha-tdd/tree/master/example)
+
+See Options below for available configuration
+
+[see examples for details](https://github.com/jhudson8/gulp-mocha-tdd/tree/master/examples)
 
 Any files within the ```_tests``` directories prefixed with ```_``` will be ignored for testing allowing for utility modules.
 
@@ -69,9 +76,10 @@ Options
 * ***taskName***: the gulp task name ("test" if undefined)
 * ***pipe***: array of gulp stream handlers (See above for example)
 * ***init***: init function executed once before the tests
-* ***scriptsDir***: top level directory ("js" if undefined)
-* ***testFileSuffix***: unit test file name suffix ("-test" if undefined)
+* ***scriptsDirName***: top level directory ("js" if undefined)
+* ***testFilePattern***: unit test file name pattern (use "{name}" to reference the module name; "{name}-test.js" if undefined)
 * ***testsDirName***: name of directory which contains the unit test files ("_tests" if undefined)
+* ***rootTestsDir***: true if using a root tests directory and undefined/false if tests are in a directory relative to the module ([see examples](https://github.com/jhudson8/gulp-mocha-tdd/tree/master/examples))
 
 
 Installation
