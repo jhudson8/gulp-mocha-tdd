@@ -45,7 +45,7 @@ or
 |-- lib
     |-- foo.js
 |-- tests
-    |-- foo-test.js
+    |-- foo.spec.js
 ```
 
 See Options below for available configuration
