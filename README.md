@@ -35,25 +35,24 @@ All modules must be within a root directory ("js" by default) and tests can eith
 
 For example
 ```
-js
-|-- _tests
-    |-- foo-test.js
-|-- foo.js
+|-- js
+    |-- _tests
+        |-- foo-test.js
+    |-- foo.js
 ```
 or
 ```
-js
-|-- foo.js
-|
-tests
-|-- foo-test.js
+|-- lib
+    |-- foo.js
+|-- tests
+    |-- foo-test.js
 ```
 
 See Options below for available configuration
 
 [see examples for details](https://github.com/jhudson8/gulp-mocha-tdd/tree/master/examples)
 
-Any files within the ```_tests``` directories prefixed with ```_``` will be ignored for testing allowing for utility modules.
+Any files within the test directories prefixed with ```_``` will be ignored for testing allowing for utility modules.
 
 
 Additional Transformations
