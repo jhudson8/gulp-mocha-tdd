@@ -10,7 +10,6 @@ easy test driven development with gulp and mocha
 * it('should support additional gulp stream handlers (like JSX)')
 * it('should re-run module tests when either the module or unit test code changes')
 
-By keeping unit tests in a subdirectory of the module javascript directory, the tests are more flexible when code is refactored and module references from the unit tests are more convienant.
 
 Usage
 -----------
