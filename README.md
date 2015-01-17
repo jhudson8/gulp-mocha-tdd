@@ -25,7 +25,7 @@ And watch for module or unit test changes
 Stop on any debugger statements
 ```
 > gulp test -d
-> node-inspector  {in another window} (install globally if it does not exist)
+> node-inspector  {in another window}
 browse to http://127.0.0.1:8080/debug?port=5858
 ```
 Any other mocha params can be used as well: see ```mocha -h```
