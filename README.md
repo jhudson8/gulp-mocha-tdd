@@ -75,7 +75,7 @@ Options
 * ***pipe***: array of gulp stream handlers (See above for example)
 * ***init***: init function executed once before the tests
 * ***scriptsDirName***: top level directory ("js" if undefined)
-* ***testFilePattern***: unit test file name pattern (use "{name}" to reference the module name; "{name}-test.js" if undefined)
+* ***testFilePattern***: unit test file name (without ext) pattern (use "{name}" to reference the module name; "{name}-test" if undefined)
 * ***testsDirName***: name of directory which contains the unit test files ("_tests" if undefined)
 * ***rootTestsDir***: true if using a root tests directory and undefined/false if tests are in a directory relative to the module ([see examples](https://github.com/jhudson8/gulp-mocha-tdd/tree/master/examples))
 

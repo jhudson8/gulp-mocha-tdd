@@ -1,1 +1,1 @@
-module.exports = require('./lib/gulp-mocha-tdd');
+module.exports = require('./lib');
