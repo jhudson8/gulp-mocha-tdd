@@ -1,3 +1,9 @@
+0.3.0
+
+- general code cleanup
+- changed "testFilePattern" init option to *not* include the extension.  For example, a valid value might be "{name}-test"
+
+
 0.2.0
 
 - Added ability to use a completely separate tests directory (in addition to module-relative tests)
