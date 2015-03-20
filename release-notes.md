@@ -1,3 +1,28 @@
+0.4.0
+
+- added the ability to export a function call that accepts the target module and target module directory path as parameters.  Below is from the README
+
+Test modules do not need the top level ```describe``` function (it will be created automatically based on file structure).  You can either just have your tests directly in the file (no usage of ```module.exports```) or you can export a function callback that contains your tests.  This callback accepts 2 parameters ```(targetModule, targetModuleDirectoryPath)```.  For example:
+
+```
+var targetModule = require('path/to/target/module');
+it('should ...', function() {
+  expect(targetModule...).to...
+});
+```
+or
+```
+module.exports = function(targetModule, targetBase) {
+  it('should ...', function() {
+    expect(targetModule...).to...
+  });
+  it('should ...', function() {
+    expect(require(targetBase + '/targetModuleName')...).to...
+  });
+}
+```
+
+
 0.3.0
 
 - general code cleanup
