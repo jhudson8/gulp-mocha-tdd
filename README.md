@@ -31,6 +31,29 @@ browse to http://127.0.0.1:8080/debug?port=5858
 Any other mocha params can be used as well: see ```mocha -h```
 
 
+Test Modules
+---------------
+Test modules do not need the top level ```describe``` function (it will be created automatically based on file structure).  You can either just have your tests directly in the file (no usage of ```module.exports```) or you can export a function callback that contains your tests.  This callback accepts 2 parameters ```(targetModule, targetModuleDirectoryPath)```.  For example:
+
+```
+var targetModule = require('path/to/target/module');
+it('should ...', function() {
+  expect(targetModule...).to...
+});
+```
+or
+```
+module.exports = function(targetModule, targetBase) {
+  it('should ...', function() {
+    expect(targetModule...).to...
+  });
+  it('should ...', function() {
+    expect(require(targetBase + '/targetModuleName')...).to...
+  });
+}
+```
+
+
 All modules must be within a root directory ("js" by default) and tests can either be in a separate root directory ("tests" by default) or tests can be in a directory relative ("_tests" by default) to the module.  Tests can use any naming pattern ("{module name}-test.js" by default).
 
 For example
