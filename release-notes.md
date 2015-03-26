@@ -1,3 +1,6 @@
+0.4.1
+- removed unnecessary code
+
 0.4.0
 
 - added the ability to export a function call that accepts the target module and target module directory path as parameters.  Below is from the README
