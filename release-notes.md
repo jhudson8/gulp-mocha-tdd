@@ -1,3 +1,6 @@
+0.4.2
+- fix bug when js directory contains multiple segments
+
 0.4.1
 - removed unnecessary code
 
