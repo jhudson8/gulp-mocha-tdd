@@ -1,4 +1,4 @@
-0.4.2
+0.4.3
 - fix bug when js directory contains multiple segments
 
 0.4.1

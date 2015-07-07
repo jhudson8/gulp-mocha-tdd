@@ -1,0 +1,118 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/Users/jhudson/.nvm/versions/node/v0.12.4/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.4
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec { raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/jhudson/Projects/personal/gulp-mocha-tdd',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/jhudson/.npm/gulp-mocha-tdd/0.4.2/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/jhudson/.npm/gulp-mocha-tdd/0.4.2/package.tgz',
+9 verbose tar pack   '/Users/jhudson/Projects/personal/gulp-mocha-tdd' ]
+10 verbose tarball /Users/jhudson/.npm/gulp-mocha-tdd/0.4.2/package.tgz
+11 verbose folder /Users/jhudson/Projects/personal/gulp-mocha-tdd
+12 info prepublish gulp-mocha-tdd@0.4.2
+13 verbose addLocalTarball adding from inside cache /Users/jhudson/.npm/gulp-mocha-tdd/0.4.2/package.tgz
+14 silly cache afterAdd gulp-mocha-tdd@0.4.2
+15 verbose afterAdd /Users/jhudson/.npm/gulp-mocha-tdd/0.4.2/package/package.json not in flight; writing
+16 verbose afterAdd /Users/jhudson/.npm/gulp-mocha-tdd/0.4.2/package/package.json written
+17 silly publish { name: 'gulp-mocha-tdd',
+17 silly publish   version: '0.4.2',
+17 silly publish   author: { name: 'Joe Hudson', email: 'joehud@gmail.com' },
+17 silly publish   description: 'easy test driven development with gulp and mocha',
+17 silly publish   keywords: [ 'gulp', 'mocha', 'tdd', 'test', 'gulpfriendly' ],
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/jhudson8/gulp-mocha-tdd.git' },
+17 silly publish   bugs: { url: 'https://github.com/jhudson8/gulp-mocha-tdd/issues' },
+17 silly publish   homepage: 'https://github.com/jhudson8/gulp-mocha-tdd',
+17 silly publish   dependencies:
+17 silly publish    { 'gulp-file': '^0.2.0',
+17 silly publish      'gulp-filter': '^2.0.0',
+17 silly publish      'gulp-header': '~1.2',
+17 silly publish      'gulp-plumber': '0.6',
+17 silly publish      'gulp-react': '~2.0',
+17 silly publish      'gulp-spawn-mocha': '^0.5.2',
+17 silly publish      istanbul: '^0.3.5',
+17 silly publish      jsdom: '~1.3',
+17 silly publish      'json-loader': '~0.5',
+17 silly publish      'jsx-loader': '~0.12',
+17 silly publish      mocha: '~2.0',
+17 silly publish      moment: '^2.8.4',
+17 silly publish      nib: '~1.0',
+17 silly publish      'react-tools': '~0.11',
+17 silly publish      sinon: '~1.12',
+17 silly publish      'stream-combiner2': '^1.0.2',
+17 silly publish      'style-loader': '~0.8',
+17 silly publish      'stylus-loader': '~0.3',
+17 silly publish      'stylus-normalize': '~3.0',
+17 silly publish      'url-loader': '~0.5',
+17 silly publish      'webpack-dev-server': '^1.6.6',
+17 silly publish      yargs: '^1.3.3',
+17 silly publish      'gulp-if': '^1.2.5',
+17 silly publish      'gulp-watch': '^3.0.0',
+17 silly publish      through2: '^0.6.3' },
+17 silly publish   readme: '# gulp-mocha-tdd\neasy test driven development with gulp and mocha\n\n* it(\'should use mocha for unit tests\')\n* it(\'should auto-generate the boilerplate module test describe statement\')\n* it(\'should be able to work with your test naming conventions\')\n* it(\'should make test driven development easy and convienant\')\n* it(\'should support mocha options like breakpoints and grep\')\n* it(\'should use conventions to associate modules with unit tests\')\n* it(\'should support additional gulp stream handlers (like JSX)\')\n* it(\'should re-run module tests when either the module or unit test code changes\')\n\n\nUsage\n-----------\n\nTo execute all tests\n```\n> gulp test\n```\nAnd watch for module or unit test changes\n```\n> gulp test -w\n```\nStop on any debugger statements\n```\n> gulp test -d\n> node-inspector  {in another window}\nbrowse to http://127.0.0.1:8080/debug?port=5858\n```\nAny other mocha params can be used as well: see ```mocha -h```\n\n\nTest Modules\n---------------\nTest modules do not need the top level ```describe``` function (it will be created automatically based on file structure).  You can either just have your tests directly in the file (no usage of ```module.exports```) or you can export a function callback that contains your tests.  This callback accepts 2 parameters ```(targetModule, targetModuleDirectoryPath)```.  For example:\n\n```\nvar targetModule = require(\'path/to/target/module\');\nit(\'should ...\', function() {\n  expect(targetModule...).to...\n});\n```\nor\n```\nmodule.exports = function(targetModule, targetBase) {\n  it(\'should ...\', function() {\n    expect(targetModule...).to...\n  });\n  it(\'should ...\', function() {\n    expect(require(targetBase + \'/targetModuleName\')...).to...\n  });\n}\n```\n\n\nAll modules must be within a root directory ("js" by default) and tests can either be in a separate root directory ("tests" by default) or tests can be in a directory relative ("_tests" by default) to the module.  Tests can use any naming pattern ("{module name}-test.js" by default).\n\nFor example\n```\n|-- js\n    |-- _tests\n        |-- foo-test.js\n    |-- foo.js\n```\nor\n```\n|-- lib\n    |-- foo.js\n|-- tests\n    |-- foo.spec.js\n```\n\nSee Options below for available configuration\n\n[see examples for details](https://github.com/jhudson8/gulp-mocha-tdd/tree/master/examples)\n\nAny files within the test directories prefixed with ```_``` will be ignored for testing allowing for utility modules.\n\n\nAdditional Transformations\n------------\nThe ```pipe``` option (array of gulp stream handlers) can be used to perform additional transformations.  The\nfollowing gulpfile can be used to support React JSX\n```\nvar gulp = require(\'gulp\');\nvar react = require(\'gulp-react\');\nvar gulpMochaTDD = require(\'gulp-mocha-tdd\');\n\ngulpMochaTDD(gulp, {\n  pipe: [react({ harmony: true })]\n});\n```\n\nOptions\n------------\n* ***taskName***: the gulp task name ("test" if undefined)\n* ***pipe***: array of gulp stream handlers (See above for example)\n* ***init***: init function executed once before the tests\n* ***scriptsDirName***: top level directory ("js" if undefined)\n* ***testFilePattern***: unit test file name (without ext) pattern (use "{name}" to reference the module name; "{name}-test" if undefined)\n* ***testsDirName***: name of directory which contains the unit test files ("_tests" if undefined)\n* ***rootTestsDir***: true if using a root tests directory and undefined/false if tests are in a directory relative to the module ([see examples](https://github.com/jhudson8/gulp-mocha-tdd/tree/master/examples))\n\n\nInstallation\n------------\nInstall dependencies\n```\nnpm install --save-dev mocha\nnpm install --save-dev gulp\nnpm install --save-dev gulp-mocha-tdd\n```\n\nInject the ```test``` task in ```gulpfile.js```\n```\nvar gulp = require(\'gulp\');\nvar gulpMochaTDD = require(\'gulp-mocha-tdd\', {\n  // add options here\n});\n\ngulpMochaTDD(gulp);\n```\n\nAdd ```.test``` to your ```.gitignore``` file\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: '6fe8475ce2140e454e49cd7432a09aa7ac86012d',
+17 silly publish   _id: 'gulp-mocha-tdd@0.4.2',
+17 silly publish   scripts: {},
+17 silly publish   _shasum: 'e85e47ee2a630652fefdeac766c04b4f719c5455',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name gulp-mocha-tdd
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/gulp-mocha-tdd
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/jhudson/.npm/gulp-mocha-tdd/0.4.2/package.tgz
+25 verbose request uri https://registry.npmjs.org/gulp-mocha-tdd
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 6:10:51 PM
+28 verbose request using bearer token for auth
+29 verbose request id dd0f92b910377c6a
+30 http request PUT https://registry.npmjs.org/gulp-mocha-tdd
+31 http 403 https://registry.npmjs.org/gulp-mocha-tdd
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=60',
+32 verbose headers   'content-length': '95',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Tue, 07 Jul 2015 22:10:52 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-jfk1025-JFK',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1436307052.167891,VS0,VE583' }
+33 verbose request invalidating /Users/jhudson/.npm/registry.npmjs.org/gulp-mocha-tdd on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 0.4.2." : gulp-mocha-tdd
+35 verbose stack     at CachingRegistryClient.<anonymous> (/Users/jhudson/.nvm/versions/node/v0.12.4/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+35 verbose stack     at Request._callback (/Users/jhudson/.nvm/versions/node/v0.12.4/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+35 verbose stack     at Request.self.callback (/Users/jhudson/.nvm/versions/node/v0.12.4/lib/node_modules/npm/node_modules/request/request.js:354:22)
+35 verbose stack     at Request.emit (events.js:110:17)
+35 verbose stack     at Request.<anonymous> (/Users/jhudson/.nvm/versions/node/v0.12.4/lib/node_modules/npm/node_modules/request/request.js:1207:14)
+35 verbose stack     at Request.emit (events.js:129:20)
+35 verbose stack     at IncomingMessage.<anonymous> (/Users/jhudson/.nvm/versions/node/v0.12.4/lib/node_modules/npm/node_modules/request/request.js:1153:12)
+35 verbose stack     at IncomingMessage.emit (events.js:129:20)
+35 verbose stack     at _stream_readable.js:908:16
+35 verbose stack     at process._tickCallback (node.js:355:11)
+36 verbose statusCode 403
+37 verbose pkgid gulp-mocha-tdd
+38 verbose cwd /Users/jhudson/Projects/personal/gulp-mocha-tdd
+39 error Darwin 14.4.0
+40 error argv "node" "/Users/jhudson/.nvm/versions/node/v0.12.4/bin/npm" "publish"
+41 error node v0.12.4
+42 error npm  v2.11.3
+43 error code E403
+44 error "You cannot publish over the previously published version 0.4.2." : gulp-mocha-tdd
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]
