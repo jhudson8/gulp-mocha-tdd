@@ -1,8 +1,17 @@
+0.4.4
+
+- handle multi-level test/script base - 91238c3
+
+
 0.4.3
+
 - fix bug when js directory contains multiple segments
 
+
 0.4.1
+
 - removed unnecessary code
+
 
 0.4.0
 
