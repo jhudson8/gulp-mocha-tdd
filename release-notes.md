@@ -1,3 +1,7 @@
+0.4.5
+
+- add better watch error handling
+
 0.4.4
 
 - handle multi-level test/script base - 91238c3
