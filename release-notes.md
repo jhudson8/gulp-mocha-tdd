@@ -1,3 +1,7 @@
+0.4.6
+
+- add concole clearing in watch mode
+
 0.4.5
 
 - add better watch error handling
