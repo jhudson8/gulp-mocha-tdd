@@ -1,3 +1,6 @@
+1.0.1
+- add start identifier for current test when in watch mode - 65ecd81
+
 1.0.0
 - always clean out the generated test dir for each test run - a324076
 
