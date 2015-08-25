@@ -1,3 +1,6 @@
+1.0.0
+- always clean out the generated test dir for each test run - a324076
+
 0.4.6
 
 - add concole clearing in watch mode
