@@ -1,3 +1,6 @@
+1.0.3
+- fix bug with gulp watch not working sometimes - 362dcb4
+
 1.0.2
 - remove unnecessary dependencies - 4eebfd8
 
