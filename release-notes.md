@@ -1,3 +1,6 @@
+1.0.2
+- remove unnecessary dependencies - 4eebfd8
+
 1.0.1
 - add start identifier for current test when in watch mode - 65ecd81
 

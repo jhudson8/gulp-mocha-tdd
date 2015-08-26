@@ -1,6 +1,6 @@
 {
   "name": "gulp-mocha-tdd",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Joe Hudson <joehud@gmail.com>",
   "description": "easy test driven development with gulp and mocha",
   "keywords": [
