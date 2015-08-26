@@ -1,3 +1,6 @@
+1.0.4
+- log file contents on error in watch mode - 28f49f9
+
 1.0.3
 - fix bug with gulp watch not working sometimes - 362dcb4
 
