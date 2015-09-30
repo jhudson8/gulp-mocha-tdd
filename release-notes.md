@@ -1,3 +1,6 @@
+1.0.5
+- remove stale jsdom dependency
+
 1.0.4
 - log file contents on error in watch mode - 28f49f9
 
