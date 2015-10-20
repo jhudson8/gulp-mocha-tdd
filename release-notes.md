@@ -1,3 +1,6 @@
+1.0.6
+- hack fix a mocha build error (will investigate further with another release)
+
 1.0.5
 - remove stale jsdom dependency
 
