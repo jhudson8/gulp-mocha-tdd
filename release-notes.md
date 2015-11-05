@@ -1,3 +1,7 @@
+1.1.0
+- Added global before/after hooks
+use global.before = function (done) {...} and global.after(...)
+
 1.0.6
 - hack fix a mocha build error (will investigate further with another release)
 
