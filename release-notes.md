@@ -1,3 +1,6 @@
+1.1.1
+- fixed bug that was introduced with 1.1.0
+
 1.1.0
 - Added global before/after hooks
 use global.before = function (done) {...} and global.after(...)
