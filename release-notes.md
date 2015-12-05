@@ -1,3 +1,6 @@
+1.1.2
+- (optimization) don't "requre" target module if the unit test function callback does not accept any parameters
+
 1.1.1
 - fixed bug that was introduced with 1.1.0
 
