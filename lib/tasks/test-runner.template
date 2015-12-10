@@ -6,6 +6,8 @@ var testsDirName = '{testsDirName}';
 var testFilePath = '{testFilePath}';
 var separateTests = {separateTests};
 var scriptsDirName = '{scriptsDirName}';
+var testBase = '{testBase}';
+
 var base = __dirname;
 var testBase = __dirname.replace(new RegExp('\/' + testsDirName + '$'), '') +
       '/' + (separateTests ? testsDirName : scriptsDirName);
@@ -13,6 +15,7 @@ var executedTestsCache = {};
 
 // allow for global initialization logic
 {init}
+
 var options = {options};
 
 function getFilePaths(path) {
@@ -55,6 +58,7 @@ function getFilePaths(path) {
   } else {
     // remove the test directory if it exists (and is relative)
     modulePath = modulePath.replace(new RegExp('(^|\/)' + testsDirName + '$'), '');
+
     rtn = {
       moduleDir: Path.join(base, scriptsDirName, modulePath),
       moduleFile: Path.join(base, scriptsDirName, modulePath, fileName),
@@ -88,6 +92,7 @@ function evalFile(path) {
 
   var filePaths = getFilePaths(path),
       targetModule;
+
   if (filePaths.isTestFile && path.match(/\/_[^\/]*$/)) {
     // files in tests dir prefixed with _ won't be tested - good for utility classes
     return;
