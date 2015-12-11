@@ -1,6 +1,6 @@
 {
   "name": "gulp-mocha-tdd",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "author": "Joe Hudson <joehud@gmail.com>",
   "description": "easy test driven development with gulp and mocha",
   "keywords": [
@@ -18,9 +18,6 @@
     "url": "https://github.com/jhudson8/gulp-mocha-tdd/issues"
   },
   "homepage": "https://github.com/jhudson8/gulp-mocha-tdd",
-  "peerDependencies": {
-    "mocha": "*"
-  },
   "dependencies": {
     "del": "^2.2.0",
     "gulp-batch": "^1.0.5",

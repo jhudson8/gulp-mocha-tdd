@@ -1,3 +1,9 @@
+2.0.2
+- remove unused peer dependency
+
+2.0.1
+- fix bad release
+
 2.0.0
 - include istanbul code coverage (use the `istanbul` option value - see README)
 - update mocha versions
