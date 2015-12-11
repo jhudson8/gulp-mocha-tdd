@@ -1,3 +1,8 @@
+2.0.0
+- include istanbul code coverage (use the `istanbul` option value - see README)
+- update mocha versions
+- watch mode has changed from `gulp test -w` to `gulp test-watch`
+
 1.1.2
 - (optimization) don't "requre" target module if the unit test function callback does not accept any parameters
 

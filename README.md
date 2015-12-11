@@ -9,26 +9,34 @@ easy test driven development with gulp and mocha
 * it('should use conventions to associate modules with unit tests')
 * it('should support additional gulp stream handlers (like JSX)')
 * it('should re-run module tests when either the module or unit test code changes')
+* it('should provide coverage reports')
 
 
-Usage
+Usage / Common Examples
 -----------
 
-To execute all tests
+Run all tests
 ```
 > gulp test
 ```
-And watch for module or unit test changes
+
+Run some tests identified by a grep statement
 ```
-> gulp test -w
+> gulp test --grep foo
 ```
+
+Watch for module or unit test changes
+```
+> gulp test-watch
+```
+
 Stop on any debugger statements
 ```
-> gulp test -d
+> gulp test -d (or --debug-brk)
 > node-inspector  {in another window}
 browse to http://127.0.0.1:8080/debug?port=5858
 ```
-Any other mocha params can be used as well: see ```mocha -h```
+
 
 
 Test Modules
@@ -101,6 +109,7 @@ Options
 * ***testFilePattern***: unit test file name (without ext) pattern (use "{name}" to reference the module name; "{name}-test" if undefined)
 * ***testsDirName***: name of directory which contains the unit test files ("_tests" if undefined)
 * ***rootTestsDir***: true if using a root tests directory and undefined/false if tests are in a directory relative to the module ([see examples](https://github.com/jhudson8/gulp-mocha-tdd/tree/master/examples))
+* ***istanbul***: istanbul options which, if included, will include istanbul coverage reports [see available options](https://github.com/SBoudrias/gulp-istanbul#opt)
 
 
 Installation
@@ -115,11 +124,28 @@ npm install --save-dev gulp-mocha-tdd
 Inject the ```test``` task in ```gulpfile.js```
 ```
 var gulp = require('gulp');
-var gulpMochaTDD = require('gulp-mocha-tdd', {
+var gulpMochaTDD = require('gulp-mocha-tdd');
+
+gulpMochaTDD(gulp, {
   // add options here
 });
-
-gulpMochaTDD(gulp);
 ```
 
 Add ```.test``` to your ```.gitignore``` file
+
+
+Coverage Reports
+----------------
+See `Options` section above for details but here is a quick example to include coverage reports in your tests
+```
+var gulp = require('gulp');
+var gulpMochaTDD = require('gulp-mocha-tdd');
+
+gulpMochaTDD(gulp, {
+  istanbul: {
+    dir: './coverage',
+    reporters: [ 'lcov', 'text' ],
+    reportOpts: { dir: './coverage' }
+  }
+});
+```
