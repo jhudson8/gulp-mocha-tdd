@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "del": "^2.2.0",
+    "gulp-batch": "^1.0.5",
     "gulp-debug": "^2.1.2",
     "gulp-file": "^0.2.0",
     "gulp-filter": "^2.0.0",
