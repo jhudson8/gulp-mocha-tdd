@@ -9,10 +9,6 @@ var scriptsDirName = '{scriptsDirName}';
 var testBase = '{testBase}';
 
 var base = __dirname;
-/*
-var testBase = __dirname.replace(new RegExp('\/' + testsDirName + '$'), '') +
-      '/' + (separateTests ? testsDirName : scriptsDirName);
-*/
 var executedTestsCache = {};
 
 // allow for global initialization logic
@@ -129,7 +125,6 @@ function isTestFile(path, name) {
     return relativePath === testsDirName || relativePath.match(
       new RegExp('^' + testsDirName + '\/'));
   } else {
-  console.log(path + ' -- ' + testsDirName);
     return path.match(new RegExp('\/' + testsDirName + '$'));
   }
 }
