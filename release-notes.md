@@ -1,3 +1,6 @@
+2.0.3
+- bug fix: ensure process fails if the tests fail
+
 2.0.2
 - remove unused peer dependency
 
