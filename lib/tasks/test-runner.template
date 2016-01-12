@@ -106,11 +106,14 @@ function evalFile(path) {
   if (!executedTestsCache[filePaths.relativeModulePath]) {
     executedTestsCache[filePaths.relativeModulePath] = true;
     describe(filePaths.relativeModulePath, function() {
-      var rtn = require(filePaths.testFile);
-      if (typeof rtn === 'function') {
+      var tester = require(filePaths.testFile);
+      if (typeof tester === 'object') {
+        tester = tester['default'];
+      }
+      if (typeof tester === 'function') {
         // execute the function and provide the test target object and test base path
-        targetModule = rtn.length && targetModule && require(filePaths.moduleFile);
-        rtn(targetModule, filePaths.moduleDir + '/');
+        targetModule = tester.length && targetModule && require(filePaths.moduleFile);
+        tester(targetModule, filePaths.moduleDir + '/');
       }
     });
   }
