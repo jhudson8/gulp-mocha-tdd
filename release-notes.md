@@ -1,3 +1,6 @@
+2.0.4
+- bug fix: handle babel es6 transpiled exports
+
 2.0.3
 - bug fix: ensure process fails if the tests fail
 
