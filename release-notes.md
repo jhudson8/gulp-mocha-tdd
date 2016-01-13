@@ -1,3 +1,6 @@
+2.0.5
+- bug fix: fix issues with the gulp-watch task
+
 2.0.4
 - bug fix: handle babel es6 transpiled exports
 
