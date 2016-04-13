@@ -1,3 +1,6 @@
+2.0.6
+- support configurable output path with `outputPath` option (defaults to `.test`)
+
 2.0.5
 - bug fix: fix issues with the gulp-watch task
 
